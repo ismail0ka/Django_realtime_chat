@@ -98,10 +98,18 @@ body {
         <input type="text" name="room_name" id="room_name" width="100px" />
         <input type="button" id="submit" value="Send">
         <script>
-            document.querySelector('#submit').onclick = function(e){
-            window.open('http://127.0.0.1:8000/Chat/'+ document.getElementById('room_name').textContent );
+            document.querySelector('#submit').onclick = function(e) {
+            var roomName = document.getElementById('room_name').value.trim(); // Get the room name from input and trim whitespace
+            if (roomName) { // Check if roomName is not empty
+                var baseUrl = window.location.href.split('?')[0]; // Get the base URL without any query parameters
+                var newUrl = baseUrl.endsWith('/') ? baseUrl + roomName : baseUrl + '/' + roomName; // Ensure proper path formatting
+                window.location.href = newUrl; // Navigate to the new URL
+            } else {
+                alert("Please enter a room name."); // Alert user if room name is empty
             }
+        }
         </script>
+
 </div>
 
 

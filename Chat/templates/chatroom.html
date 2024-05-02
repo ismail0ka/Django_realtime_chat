@@ -14,7 +14,7 @@
       {{room_name|json_script:"room-name"}}
       {{request.user.username|json_script:"user_username"}}
       <script>
-          const username=JSON.parse(document.getElementById('user_username').textContent);
+          const username="test";
           const roomName = JSON.parse(document.getElementById('room-name').textContent);
         document.querySelector('#submit').onclick = function(e) {
           const messageInputDom = document.querySelector('#input');
